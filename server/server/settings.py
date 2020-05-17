@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/3.0/ref/settings/
 """
 
 import os
+from grpc_django import GRPCSettings, GRPCService
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -20,7 +21,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # See https://docs.djangoproject.com/en/3.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'lf-&h-rr((5zny9h7x-xs90p*#b^(62i@s&8p^s@_5um#i8uno'
+SECRET_KEY = '^9*#w)c_d$u62@d%7mb+@@w-aisa(%maotc^wxk!_z5mc2#_$u'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -37,7 +38,21 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'grpc_django',
 ]
+
+GRPC_SETTINGS = GRPCSettings(
+    services=[GRPCService(
+        # Name of the service as defined in .proto definition
+        name='UserService',
+        # The package name as defined in .proto definition (in our case it should look like `package user;`
+        package_name='user',
+        # The path (relative to `manage.py`) to the .proto definition 
+        proto_path='users/user.proto',
+        # This will be the list of RPCs similar to `urls.py` definition in Django
+        rpc_conf='users.rpc'
+    )]
+)
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -75,8 +90,12 @@ WSGI_APPLICATION = 'server.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'yedutrhs',
+        'USER': 'yedutrhs',
+        'PASSWORD' : '',
+        'HOST' : 'kandula.db.elephantsql.com',
+        'PORT' : '5432'
     }
 }
 
