@@ -20,14 +20,13 @@ var schema = buildSchema(`
     id: String
   }
   type Query {
-    allPatienst: [Patient]
+    allPatients: [Patient]
   }
 `);
 
 // The root provides a resolver function for each API endpoint
 var root = {
-  allPatienst: () => {
-    console.log("hier");
+  allPatients: () => {
     return [{id: "testID1"}, {id: "testID2"}];
   },
 };

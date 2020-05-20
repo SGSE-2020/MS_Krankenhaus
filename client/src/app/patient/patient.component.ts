@@ -3,7 +3,7 @@ import {Apollo} from 'apollo-angular';
 import gql from 'graphql-tag';
 
 @Component({
-  selector: 'exchange-rates',
+  selector: 'app-patient',
   template: `
     <div *ngIf="loading">
       Loading...
@@ -11,15 +11,15 @@ import gql from 'graphql-tag';
     <div *ngIf="error">
       Error :(
     </div>
-    <div *ngIf="rates">
-      <div *ngFor="let rate of rates">
-        <p>{{rate.currency}}: {{rate.rate}}</p>
+    <div *ngIf="allPatients">
+      <div *ngFor="let patient of allPatients">
+        <p>{{patient.id}}: {{patient.id}}</p>
       </div>
     </div>
   `,
 })
 export class PatientComponent implements OnInit {
-  rates: any[];
+  allPatients: any[];
   loading = true;
   error: any;
 
@@ -30,15 +30,14 @@ export class PatientComponent implements OnInit {
       .watchQuery<any>({
         query: gql`
           {
-            rates(currency: "USD") {
-              currency
-              rate
+            allPatients {
+              id
             }
           }
         `,
       })
       .valueChanges.subscribe(result => {
-        this.rates = result.data && result.data.rates;
+        this.allPatients = result.data && result.data.allPatients;
         this.loading = result.loading;
         this.error = result.errors;
       });
