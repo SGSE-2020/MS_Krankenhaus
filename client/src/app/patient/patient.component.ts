@@ -17,7 +17,7 @@ export class PatientComponent implements OnInit {
   constructor(private apollo: Apollo) { }
 
   ngOnInit(): void {
-    this.patients = this.apollo.watchQuery<Query>({
+    this.apollo.watchQuery({
       query: gql`
         query allPatients {
           allPatienst {
@@ -27,9 +27,9 @@ export class PatientComponent implements OnInit {
       `
     })
       .valueChanges
-      .pipe(
-        map(result => result.data.allPatients)
-      );
+      .subscribe(result => {
+        console.log(result);
+      });
   }
 
 }

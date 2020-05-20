@@ -16,15 +16,19 @@ gRPCApp.start('127.0.0.1:50051')
 
 // Construct a schema, using GraphQL schema language
 var schema = buildSchema(`
+  type Patient {
+    id: String
+  }
   type Query {
-    hello: String
+    allPatienst: [Patient]
   }
 `);
 
 // The root provides a resolver function for each API endpoint
 var root = {
-  hello: () => {
-    return 'Hello world!';
+  allPatienst: () => {
+    console.log("hier");
+    return [{id: "testID1"}, {id: "testID2"}];
   },
 };
 
