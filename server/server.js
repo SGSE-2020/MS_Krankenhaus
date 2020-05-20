@@ -1,6 +1,8 @@
 const path = require('path')
 const Mali = require('mali')
-var { graphql, buildSchema } = require('graphql');
+var express = require('express');
+var graphqlHTTP = require('express-graphql');
+var { buildSchema } = require('graphql');
 
 function addPatient (ctx) {
     ctx.res = { success: true }
@@ -8,7 +10,29 @@ function addPatient (ctx) {
   
 
 const PROTO_PATH = path.resolve(__dirname, './proto/patient.proto')
-const app = new Mali(PROTO_PATH, 'Hospital')
-app.use({ addPatient })
-app.start('127.0.0.1:50051')
+const gRPCApp = new Mali(PROTO_PATH, 'Hospital')
+gRPCApp.use({ addPatient })
+gRPCApp.start('127.0.0.1:50051')
 
+// Construct a schema, using GraphQL schema language
+var schema = buildSchema(`
+  type Query {
+    hello: String
+  }
+`);
+
+// The root provides a resolver function for each API endpoint
+var root = {
+  hello: () => {
+    return 'Hello world!';
+  },
+};
+
+var graphQLApp = express();
+graphQLApp.use('/graphql', graphqlHTTP({
+  schema: schema,
+  rootValue: root,
+  graphiql: true,
+}));
+graphQLApp.listen(4000);
+console.log('Running a GraphQL API server at http://localhost:4000/graphql');
