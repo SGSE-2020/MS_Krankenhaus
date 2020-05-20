@@ -2,6 +2,7 @@ const path = require('path')
 const Mali = require('mali')
 var express = require('express');
 var graphqlHTTP = require('express-graphql');
+const restify = require('restify');
 var { buildSchema } = require('graphql');
 
 function addPatient (ctx) {
@@ -31,11 +32,25 @@ var root = {
   },
 };
 
-var graphQLApp = express();
-graphQLApp.use('/graphql', graphqlHTTP({
-  schema: schema,
-  rootValue: root,
-  graphiql: true,
-}));
+var graphQLApp = restify.createServer();
+
+graphQLApp.get(
+  '/graphql',
+  graphqlHTTP({
+    schema: schema,
+    rootValue: root,
+    graphiql: true,
+  }),
+);
+
+graphQLApp.post(
+  '/graphql',
+  graphqlHTTP({
+    schema: schema,
+    rootValue: root,
+    graphiql: true,
+  }),
+);
+
 graphQLApp.listen(4000);
 console.log('Running a GraphQL API server at http://localhost:4000/graphql');
