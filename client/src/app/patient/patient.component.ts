@@ -1,35 +1,46 @@
-import { Component, OnInit } from '@angular/core';
-import { Apollo } from 'apollo-angular';
-import { map } from 'rxjs/operators';
-
+import {Component, OnInit} from '@angular/core';
+import {Apollo} from 'apollo-angular';
 import gql from 'graphql-tag';
 
-import { Patient, Query} from '../types';
-import { Observable } from 'rxjs';
-
 @Component({
-  selector: 'app-patient',
-  templateUrl: './patient.component.html',
-  styleUrls: ['./patient.component.css']
+  selector: 'exchange-rates',
+  template: `
+    <div *ngIf="loading">
+      Loading...
+    </div>
+    <div *ngIf="error">
+      Error :(
+    </div>
+    <div *ngIf="rates">
+      <div *ngFor="let rate of rates">
+        <p>{{rate.currency}}: {{rate.rate}}</p>
+      </div>
+    </div>
+  `,
 })
 export class PatientComponent implements OnInit {
-  patients: Observable<Patient[]>;
-  constructor(private apollo: Apollo) { }
+  rates: any[];
+  loading = true;
+  error: any;
 
-  ngOnInit(): void {
-    this.apollo.watchQuery({
-      query: gql`
-        query allPatients {
-          allPatienst {
-            id
+  constructor(private apollo: Apollo) {}
+
+  ngOnInit() {
+    this.apollo
+      .watchQuery<any>({
+        query: gql`
+          {
+            rates(currency: "USD") {
+              currency
+              rate
+            }
           }
-        }
-      `
-    })
-      .valueChanges
-      .subscribe(result => {
-        console.log(result);
+        `,
+      })
+      .valueChanges.subscribe(result => {
+        this.rates = result.data && result.data.rates;
+        this.loading = result.loading;
+        this.error = result.errors;
       });
   }
-
 }
