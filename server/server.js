@@ -1,5 +1,6 @@
 const path = require('path')
 const Mali = require('mali')
+var { graphql, buildSchema } = require('graphql');
 
 function addPatient (ctx) {
     ctx.res = { success: true }
@@ -7,6 +8,7 @@ function addPatient (ctx) {
   
 
 const PROTO_PATH = path.resolve(__dirname, './proto/patient.proto')
-const app = new Mali(PROTO_PATH, 'Greeter')
+const app = new Mali(PROTO_PATH, 'Hospital')
 app.use({ addPatient })
 app.start('127.0.0.1:50051')
+
