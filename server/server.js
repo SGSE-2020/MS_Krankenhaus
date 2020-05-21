@@ -15,42 +15,23 @@ const gRPCApp = new Mali(PROTO_PATH, 'Hospital')
 gRPCApp.use({ addPatient })
 gRPCApp.start('127.0.0.1:50051')
 
-// Construct a schema, using GraphQL schema language
-var schema = buildSchema(`
-  type Patient {
-    id: String
-  }
-  type Query {
-    allPatients: [Patient]
-  }
-`);
+var app = express();
 
-// The root provides a resolver function for each API endpoint
-var root = {
-  allPatients: () => {
-    return [{id: "testID1"}, {id: "testID2"}];
-  },
-};
+app.get('/patients', function (req, res) {
+  response = 
+    [{id: "testID1"}, {id: "testID2"}]
+  ;
+  console.log(response);
+  res.set("Access-Control-Allow-Origin", "*");
+  res.set("Access-Control-Allow-Methods", "GET, POST, OPTIONS"); 
+  res.set('Access-Control-Allow-Credentials', true);
+  res.set('Content-Type', 'application/json');
+  res.json(response);
+})
 
-var graphQLApp = restify.createServer();
-
-graphQLApp.get(
-  '/graphql',
-  graphqlHTTP({
-    schema: schema,
-    rootValue: root,
-    graphiql: true,
-  }),
-);
-
-graphQLApp.post(
-  '/graphql',
-  graphqlHTTP({
-    schema: schema,
-    rootValue: root,
-    graphiql: true,
-  }),
-);
-
-graphQLApp.listen(4000);
-console.log('Running a GraphQL API server at http://localhost:4000/graphql');
+var server = app.listen(8081, function () {
+   var host = server.address().address
+   var port = server.address().port
+   
+   console.log("Example app listening at http://%s:%s", host, port)
+})
