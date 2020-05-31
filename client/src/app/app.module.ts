@@ -13,6 +13,7 @@ import { AppointmentsComponent } from './appointments/appointments.component';
 import { StaffComponent } from './staff/staff.component';
 import { RouterModule } from '@angular/router';
 import { ReactiveFormsModule } from '@angular/forms';
+import { PatientDetailsComponent } from './patient-details/patient-details.component';
 
 
 @NgModule({
@@ -23,6 +24,7 @@ import { ReactiveFormsModule } from '@angular/forms';
     HomeComponent,
     AppointmentsComponent,
     StaffComponent,
+    PatientDetailsComponent,
   ],
   imports: [
     BrowserModule,
@@ -36,6 +38,7 @@ import { ReactiveFormsModule } from '@angular/forms';
       { path: 'staff', component: StaffComponent },
       { path: 'appointments', component: AppointmentsComponent },
       { path: 'patients', component: PatientsComponent },
+      { path: 'patient/:patientId', component: PatientDetailsComponent },
     ])
   ],
   providers: [DataService],

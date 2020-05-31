@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Staff } from '../staff.model';
+import { DataService } from '../data.service';
 
 @Component({
   selector: 'app-staff',
@@ -7,9 +9,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class StaffComponent implements OnInit {
 
-  constructor() { }
+  staff$: Staff[]
+  constructor(private dataService: DataService) {}
 
-  ngOnInit(): void {
+  ngOnInit() {
+    return this.dataService.getStaff()
+      .subscribe(data => this.staff$ = data);
   }
 
 }
