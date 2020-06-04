@@ -37,7 +37,7 @@ env:
   IMAGE_frontend: ms-krankenhaus-frontend
   IMAGE_backend: ms-krankenhaus-backend
   REGISTRY_HOSTNAME: gcr.io
-  DEPLOYMENT_NAME: ms-krankenhaus-frontend
+  DEPLOYMENT_NAME: ms-krankenhaus
 
 
 
