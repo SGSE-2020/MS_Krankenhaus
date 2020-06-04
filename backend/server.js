@@ -26,6 +26,7 @@ app.get('/patients', function (req, res) {
   res.set("Access-Control-Allow-Methods", "GET, POST, OPTIONS"); 
   res.set('Access-Control-Allow-Credentials', true);
   res.set('Content-Type', 'application/json');
+  res.status(200);
   res.json(response);
 })
 
