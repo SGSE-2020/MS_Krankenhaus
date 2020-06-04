@@ -22,7 +22,6 @@ jobs:
         npm install
     - run: |
         cd backend
-        npm start
         npm test
       env:
         CI: true
