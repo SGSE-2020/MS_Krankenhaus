@@ -48,3 +48,10 @@ var server = app.listen(8080, function () {
    
    console.log("Example app listening at http://%s:%s", host, port)
 })
+
+exports.closeServer = function(red, green, blue) {
+
+  server.close();
+  gRPCApp.close();
+
+};
