@@ -2,23 +2,23 @@ apiVersion: extensions/v1beta1
 kind: Deployment
 metadata:
   labels:
-    app: ms-MSSERVICE
-  name: ms-MSSERVICE
+    app: ms-krankenhaus
+  name: ms-krankenhaus
 spec:
   replicas: 1
   strategy: {}
   template:
     metadata:
       labels:
-        app: ms-MSSERVICE
+        app: ms-krankenhaus
     spec:
       containers:
-      - image: ms-MSSERVICE-frontend
-        name: ms-MSSERVICE-frontend
+      - image: ms-krankenhaus-frontend
+        name: ms-krankenhaus-frontend
         ports:
         - containerPort: 80
-      - image: ms-MSSERVICE-backend
-        name: ms-MSSERVICE-backend
+      - image: ms-krankenhaus-backend
+        name: ms-krankenhaus-backend
         ports:
         - containerPort: 8080
         - containerPort: 50051
