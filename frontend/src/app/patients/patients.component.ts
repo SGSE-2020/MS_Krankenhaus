@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Patient } from '../patient.model';
 import { DataService } from '../data.service';
-import { GlobalVariables} from '../GlobalData';
+import { GlobalVariables} from '../globalData';
 
 @Component({
   selector: 'app-patients',

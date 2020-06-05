@@ -3,7 +3,7 @@ import { ActivatedRoute } from '@angular/router';
 
 import { Patient } from '../patient.model';
 import { PatientsComponent } from '../patients/patients.component';
-import { GlobalVariables} from '../GlobalData';
+import { GlobalVariables} from '../globalData';
 
 @Component({
   selector: 'app-patient-details',
