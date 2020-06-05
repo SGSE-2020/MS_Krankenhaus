@@ -1,3 +1,5 @@
+<h1>Patienten</h1>
+
 <div *ngFor='let patient of patients$'>
     <h2>
         <a [title]="patient.id + ' details'" [routerLink]="['/patient', patient.id]">

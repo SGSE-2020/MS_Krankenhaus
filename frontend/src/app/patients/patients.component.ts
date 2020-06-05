@@ -15,5 +15,5 @@ export class PatientsComponent implements OnInit {
     return this.dataService.getPatients()
       .subscribe(data => this.patients$ = data);
   }
-
+  
 }

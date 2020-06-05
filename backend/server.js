@@ -1,9 +1,7 @@
 const path = require('path')
 const Mali = require('mali')
+const testData = require('./testData')
 var express = require('express');
-var graphqlHTTP = require('express-graphql');
-const restify = require('restify');
-var { buildSchema } = require('graphql');
 
 function addPatient (ctx) {
     ctx.res = { success: true }
@@ -18,10 +16,7 @@ gRPCApp.start('127.0.0.1:50051')
 var app = express();
 
 app.get('/patients', function (req, res) {
-  response = 
-    [{id: "Bernd", station: "B-03", faculty: "Dermatologie", symtomps:"Gerötete Haut", diagnosis:"Hautkreps", medication:"AB12"}, 
-    {id: "Rüdiger", station: "Intensiv", faculty: "Neuro", symtomps:"Verschwommene Sicht", diagnosis:"Tumor", medicatio:"IBU-600"}]
-  ;
+  response = testData.testPatients;
   res.set("Access-Control-Allow-Origin", "*");
   res.set("Access-Control-Allow-Methods", "GET, POST, OPTIONS"); 
   res.set('Access-Control-Allow-Credentials', true);
@@ -31,10 +26,25 @@ app.get('/patients', function (req, res) {
 })
 
 app.get('/staff', function (req, res) {
-  response = 
-    [{id: "Max", station: "B-03", faculty: "Dermatologie", titel: "Dr. med"}, 
-    {id: "Helga", station: "A-02", faculty: "Neuro", titel: ""}]
-  ;
+  response = testData.testStaff;
+  res.set("Access-Control-Allow-Origin", "*");
+  res.set("Access-Control-Allow-Methods", "GET, POST, OPTIONS"); 
+  res.set('Access-Control-Allow-Credentials', true);
+  res.set('Content-Type', 'application/json');
+  res.json(response);
+})
+
+app.get('/bills', function (req, res) {
+  response = testData.testBills;
+  res.set("Access-Control-Allow-Origin", "*");
+  res.set("Access-Control-Allow-Methods", "GET, POST, OPTIONS"); 
+  res.set('Access-Control-Allow-Credentials', true);
+  res.set('Content-Type', 'application/json');
+  res.json(response);
+})
+
+app.get('/appointments', function (req, res) {
+  response = testData.testAppointments;
   res.set("Access-Control-Allow-Origin", "*");
   res.set("Access-Control-Allow-Methods", "GET, POST, OPTIONS"); 
   res.set('Access-Control-Allow-Credentials', true);

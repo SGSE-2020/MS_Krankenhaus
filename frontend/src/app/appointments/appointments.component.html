@@ -1,1 +1,6 @@
-<p>appointments works!</p>
+<h1>Termine</h1>
+
+<div *ngFor='let appointment of appointments$'>
+    <p>Zeit: {{appointment.time}}, Station: {{appointment.station}}, Fachbereich: {{appointment.faculty}}, Doctor: {{appointment.doctor}}</p>
+    
+</div>

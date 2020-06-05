@@ -14,6 +14,8 @@ import { StaffComponent } from './staff/staff.component';
 import { RouterModule } from '@angular/router';
 import { ReactiveFormsModule } from '@angular/forms';
 import { PatientDetailsComponent } from './patient-details/patient-details.component';
+import { BillsComponent } from './bills/bills.component';
+import { ImpressumComponent } from './impressum/impressum.component';
 
 
 @NgModule({
@@ -25,6 +27,8 @@ import { PatientDetailsComponent } from './patient-details/patient-details.compo
     AppointmentsComponent,
     StaffComponent,
     PatientDetailsComponent,
+    BillsComponent,
+    ImpressumComponent,
   ],
   imports: [
     BrowserModule,
@@ -39,6 +43,8 @@ import { PatientDetailsComponent } from './patient-details/patient-details.compo
       { path: 'appointments', component: AppointmentsComponent },
       { path: 'patients', component: PatientsComponent },
       { path: 'patient/:patientId', component: PatientDetailsComponent },
+      { path: 'bills', component: BillsComponent },
+      { path: 'impressum', component: ImpressumComponent },
     ])
   ],
   providers: [DataService],
