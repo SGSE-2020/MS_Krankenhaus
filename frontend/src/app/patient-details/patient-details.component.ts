@@ -1,8 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 
 import { Patient } from '../patient.model';
-import { DataService } from '../data.service';
+import { PatientsComponent } from '../patients/patients.component';
+import { GlobalVariables} from '../GlobalData';
 
 @Component({
   selector: 'app-patient-details',
@@ -10,21 +11,16 @@ import { DataService } from '../data.service';
   styleUrls: ['./patient-details.component.css']
 })
 export class PatientDetailsComponent implements OnInit {
-
-  patientId;
-  patient$: Patient
+  patient$: Patient;
 
   constructor(
     private route: ActivatedRoute,
-    private dataService: DataService
   ) { }
 
   ngOnInit(): void {
     this.route.paramMap.subscribe(params => {
-      this.patientId = params.get('patientId');
+      this.patient$ = GlobalVariables.patients$[+params.get('productId')];
     });
-    return this.dataService.getPatients()
-      .subscribe(data => this.patients$ = data);
   }
 
 }

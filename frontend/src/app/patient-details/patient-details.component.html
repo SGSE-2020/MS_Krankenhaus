@@ -1,1 +1,17 @@
-<p>patient-details works!</p>
+
+<div *ngIf="patient$">
+    <h1>{{ patient$.id }}</h1>
+    <p>{{ patient$.station}}</p>
+    <p>{{ patient$.faculty }}</p>
+  
+  </div>
+
+  <button class="favorite styled"
+        type="button">
+    Bearbeiten
+</button>
+
+<button class="favorite styled"
+        type="button">
+    An Hausartzt überweisen
+</button>

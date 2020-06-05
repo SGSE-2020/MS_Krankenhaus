@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Patient } from '../patient.model';
 import { DataService } from '../data.service';
+import { GlobalVariables} from '../GlobalData';
 
 @Component({
   selector: 'app-patients',
@@ -13,7 +14,10 @@ export class PatientsComponent implements OnInit {
 
   ngOnInit() {
     return this.dataService.getPatients()
-      .subscribe(data => this.patients$ = data);
+      .subscribe(data => {
+          this.patients$ = data;
+          GlobalVariables.patients$ = data
+      });
   }
   
 }
