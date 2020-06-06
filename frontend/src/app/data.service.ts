@@ -9,10 +9,10 @@ import { Bill } from './bill.model';
   providedIn: 'root'
 })
 export class DataService {
-  patientsUrl = 'http://localhost:8080/patients';
-  staffUrl = 'http://localhost:8080/staff';
-  billsUrl = 'http://localhost:8080/bills';
-  appointmentrsUrl = 'http://localhost:8080/appointments';
+  patientsUrl = '/api/patients';
+  staffUrl = '/api/staff';
+  billsUrl = '/api/bills';
+  appointmentrsUrl = '/api/appointments';
 
   constructor(private _http: HttpClient) { }
 
