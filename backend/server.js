@@ -3,23 +3,29 @@ const Mali = require('mali')
 const testData = require('./testData')
 var express = require('express');
 
-const Sequelize = require('sequelize');
+let db = require('./database');
 
-// Option 1: Passing parameters separately
-const sequelize = new Sequelize('krankenhaus', 'krankenhaus', 'sgse-ss2020', {
-  host: 'postgres',
-  dialect: 'postgres'
+const shouldDropTables = true;
+console.log("test")
+for(patient in testData.testPatients) {
+  console.log(testData.testPatients[patient].id, testData.testPatients[patient].station,
+testData.testPatients[patient].faculty, testData.testPatients[patient].symtomps,testData.testPatients[patient].diagnosis,
+testData.testPatients[patient].medication)
+}
+
+db.sequelize.sync({force: shouldDropTables}).then(function(){
+    console.log('DB connection successful.');
+    // Create a new patients
+    for(patient in testData.testPatients) {
+      db.patient.create({ userid: testData.testPatients[patient].id, station: testData.testPatients[patient].station,
+         faculty: testData.testPatients[patient].faculty, symtomps: testData.testPatients[patient].symtomps, diagnosis: testData.testPatients[patient].diagnosis,
+         medication: testData.testPatients[patient].medication}).then(patient => {
+        console.log("New Patient created", patient.userid);
+      });
+    }
+}, function(err){
+    console.log('DB connection not successful.');
 });
-
-sequelize
-  .authenticate()
-  .then(() => {
-    console.log('Connection has been established successfully.');
-  })
-  .catch(err => {
-    console.error('Unable to connect to the database:', err);
-  });
-
 
 function addPatient (ctx) {
     ctx.res = { success: true }
