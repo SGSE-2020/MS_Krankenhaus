@@ -3,6 +3,24 @@ const Mali = require('mali')
 const testData = require('./testData')
 var express = require('express');
 
+const Sequelize = require('sequelize');
+
+// Option 1: Passing parameters separately
+const sequelize = new Sequelize('krankenhaus', 'krankenhaus', 'sgse-ss2020', {
+  host: 'postgres',
+  dialect: 'postgres'
+});
+
+sequelize
+  .authenticate()
+  .then(() => {
+    console.log('Connection has been established successfully.');
+  })
+  .catch(err => {
+    console.error('Unable to connect to the database:', err);
+  });
+
+
 function addPatient (ctx) {
     ctx.res = { success: true }
   }
@@ -56,7 +74,7 @@ var server = app.listen(8080, function () {
    var host = server.address().address
    var port = server.address().port
    
-   console.log("Example app listening at http://%s:%s", host, port)
+   console.log("Listening at http://%s:%s", host, port)
 })
 
 exports.closeServer = function(red, green, blue) {

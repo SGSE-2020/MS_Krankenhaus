@@ -1,0 +1,14 @@
+version: '3'
+services:
+  backend:
+    build: backend/.
+    ports:
+      - 8080:8080
+      - 50051:50051
+      
+    network_mode: bridge
+
+    # Link this container to the postgres container with hostname 'postgres'
+    external_links:
+      - postgres:postgres
+
