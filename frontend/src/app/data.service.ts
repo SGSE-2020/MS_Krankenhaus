@@ -23,6 +23,10 @@ export class DataService {
     return this._http.get<Patient[]>(this.patientsUrl);
   }
 
+  postPatient(query) {
+    return this._http.post(this.patientsUrl + query, "");
+  }
+
   getStaff(){
     return this._http.get<Staff[]>(this.staffUrl);
   }
@@ -33,5 +37,9 @@ export class DataService {
 
   getAppointments(){
     return this._http.get<Appointment[]>(this.appointmentrsUrl);
+  }
+
+  postAppointment(query) {
+    return this._http.post(this.appointmentrsUrl + query, "");
   }
 }
