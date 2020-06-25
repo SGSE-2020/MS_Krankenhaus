@@ -44,6 +44,8 @@ import {MatCheckboxModule} from '@angular/material/checkbox';
 import {MatSelectModule} from '@angular/material/select';
 import {MatDatepickerModule} from '@angular/material/datepicker';
 import {MatNativeDateModule} from '@angular/material/core';
+import { PatientNewComponent } from './patient-new/patient-new.component';
+import { PatientUpdateComponent } from './patient-update/patient-update.component';
 
 
 @NgModule({
@@ -58,6 +60,8 @@ import {MatNativeDateModule} from '@angular/material/core';
     BillsComponent,
     ImpressumComponent,
     LoginComponent,
+    PatientNewComponent,
+    PatientUpdateComponent,
   ],
   imports: [
     AngularFireModule.initializeApp(environment.firebase),

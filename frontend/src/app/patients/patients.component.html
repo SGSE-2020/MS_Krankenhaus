@@ -3,6 +3,8 @@
 
 <h1>Patienten</h1>
 
+<a mat-raised-button [routerLink]="'/newpatient'">Neuer Patient</a>
+
 <div *ngFor='let patient of patients$'>
     <h2>
         <a [title]="patient.id + ' details'" [routerLink]="['/patient', patient.id]">

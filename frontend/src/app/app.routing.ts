@@ -10,6 +10,8 @@ import { PatientDetailsComponent } from './patient-details/patient-details.compo
 import { BillsComponent } from './bills/bills.component';
 import { ImpressumComponent } from './impressum/impressum.component';
 import { LoginComponent } from './login/login.component';
+import { PatientNewComponent } from './patient-new/patient-new.component';
+import { PatientUpdateComponent } from './patient-update/patient-update.component';
 
 const redirectUnauthorizedToLogin = () => redirectUnauthorizedTo(['login']);
 const redirectLoggedInToHome = () => redirectLoggedInTo(['home']);
@@ -28,6 +30,8 @@ const routes: Routes = [
     { path: 'patient/:patientId', component: PatientDetailsComponent },
     { path: 'bills', component: BillsComponent },
     { path: 'impressum', component: ImpressumComponent },
+    { path: 'newpatient', component: PatientNewComponent },
+    { path: 'updatepatient', component: PatientUpdateComponent },
     {path: 'login', component: LoginComponent, data: {authGuardPipe: redirectLoggedInToHome}},
   
     // If there is not match, redirect to home
