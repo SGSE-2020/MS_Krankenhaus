@@ -1,9 +1,13 @@
 module.exports = (sequelize, Sequelize) => {
     const Patient = sequelize.define("patient", {
         userid: {
-            type: Sequelize.STRING,
+            type: Sequelize.INTEGER,
             primaryKey: true,
-            autoIncrement: false
+            autoIncrement: true
+        },
+        name: {
+            type: Sequelize.STRING,
+            allowNull: true,
         },
         station: {
             type: Sequelize.STRING,
