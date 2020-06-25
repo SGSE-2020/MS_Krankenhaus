@@ -26,7 +26,7 @@ db.sequelize.sync({force: shouldDropTables}).then(function(){
     for(appointment in testData.testAppointments) {
       db.appointment.create({ patientid: testData.testAppointments[appointment].patientId, station: testData.testAppointments[appointment].station,
         faculty: testData.testAppointments[appointment].faculty, time: testData.testAppointments[appointment].time}).then(appointment => {
-        console.log("New appointment created", appointment.patientId);
+        console.log("New appointment created", appointment.patientid);
       });
     }
     
@@ -49,7 +49,7 @@ var app = express();
 app.get('/patients', function (req, res) {
   db.patient.findAll().then(patients => {
     console.log("All patients:", JSON.stringify(patients));
-    response = JSON.stringify(patients);
+    response = patients
   });
   res.set("Access-Control-Allow-Origin", "*");
   res.set("Access-Control-Allow-Methods", "GET, POST, OPTIONS"); 
@@ -110,7 +110,7 @@ app.delete('/patients', function (req, res) {
 app.get('/staff', function (req, res) {
   db.staff.findAll().then(staff => {
     console.log("All staff members:", JSON.stringify(staff));
-    response = JSON.stringify(staff);
+    response = staff
   });
   res.set("Access-Control-Allow-Origin", "*");
   res.set("Access-Control-Allow-Methods", "GET, POST, OPTIONS"); 
@@ -131,7 +131,7 @@ app.get('/bills', function (req, res) {
 app.get('/appointments', function (req, res) {
   db.appointment.findAll().then(appointment => {
     console.log("All appointment:", JSON.stringify(appointment));
-    response = JSON.stringify(appointment);
+    response = appointment
   });
   res.set("Access-Control-Allow-Origin", "*");
   res.set("Access-Control-Allow-Methods", "GET, POST, OPTIONS"); 

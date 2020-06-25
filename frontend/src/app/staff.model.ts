@@ -1,6 +1,8 @@
 export class Staff {
-    id: string;
+    userid: string;
     station: string;
     faculty: string;
     titel: string;
+    createdAt: string;
+    updatedAt: string;
 }

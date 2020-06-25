@@ -16,4 +16,8 @@ export class AppointmentsComponent implements OnInit {
     return this.dataService.getAppointments()
       .subscribe(data => this.appointments$ = data);
   }
+
+  createAppointment() {
+    console.log("hief")
+  }
 }

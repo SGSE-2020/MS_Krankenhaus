@@ -2,7 +2,8 @@ const Sequelize = require("sequelize");
 
 const sequelize = new Sequelize('krankenhaus', 'krankenhaus', 'sgse-ss2020', {
     host: 'postgres',
-    dialect: 'postgres'
+    dialect: 'postgres',
+    timestamps: false,
 });
 
 const db = {};
