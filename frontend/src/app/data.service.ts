@@ -10,6 +10,7 @@ import { Bill } from './bill.model';
 })
 export class DataService {
   baseRoot = "localhost:8080"
+  //baseRoot = "node:8080"
   //baseRoot = "/api"
   patientsUrl = this.baseRoot + '/patients';
   staffUrl = this.baseRoot + '/staff';
