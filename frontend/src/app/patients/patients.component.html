@@ -6,7 +6,7 @@
 <div *ngFor='let patient of patients$'>
     <h2>
         <a [title]="patient.id + ' details'" [routerLink]="['/patient', patient.id]">
-            {{patient.id}}
+            {{patient.name}}
         </a>
     </h2>
     <p>Station: {{patient.station}}, Fachbereich: {{patient.faculty}}, Symtome: {{patient.symtomps}}, Diagnose: {{patient.diagnosis}}, Medikamente: {{patient.medication}}</p>
