@@ -19,7 +19,7 @@ export class PatientDetailsComponent implements OnInit {
 
   ngOnInit(): void {
     this.route.paramMap.subscribe(params => {
-      this.patient$ = GlobalVariables.patients$[+params.get('productId')];
+      this.patient$ = GlobalVariables.patients$[+params.get('patientId')-1];
     });
   }
 

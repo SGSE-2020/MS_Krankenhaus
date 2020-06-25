@@ -1,5 +1,6 @@
 export class Patient {
-    id: string;
+    userid: number;
+    name: string;
     station: string;
     faculty: string;
     symptomps: string;

@@ -19,8 +19,50 @@ spec:
         - containerPort: 80
       - image: ms-krankenhaus-backend
         name: ms-krankenhaus-backend
+        env:
+          - name: POSTGRES_DB
+            valueFrom:
+              secretKeyRef:
+                name: ms-krankenhaus
+                key: POSTGRES_DB
+          - name: POSTGRES_USER
+            valueFrom:
+              secretKeyRef:
+                name: ms-krankenhaus
+                key: POSTGRES_USER
+          - name: POSTGRES_PASSWORD
+            valueFrom:
+              secretKeyRef:
+                name: ms-krankenhaus
+                key: POSTGRES_PASSWORD
         ports:
         - containerPort: 8080
-        - containerPort: 50051
+      - image: postgres
+        name: ms-krankenhaus-db
+        env:
+          - name: POSTGRES_DB
+            valueFrom:
+              secretKeyRef:
+                name: ms-krankenhaus
+                key: POSTGRES_DB
+          - name: POSTGRES_USER
+            valueFrom:
+              secretKeyRef:
+                name: ms-krankenhaus
+                key: POSTGRES_USER
+          - name: POSTGRES_PASSWORD
+            valueFrom:
+              secretKeyRef:
+                name: ms-krankenhaus
+                key: POSTGRES_PASSWORD
+        volumeMounts:
+        - mountPath: /var/lib/postgresql/data/
+          name: db
+          subPath: krankenhaus-db
       restartPolicy: Always
+      volumes:
+      - name: db
+        gcePersistentDisk:
+          pdName: ms-krankenhaus
+          fsType: ext4
 status: {}

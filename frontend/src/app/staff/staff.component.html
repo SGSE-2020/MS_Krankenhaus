@@ -1,7 +1,10 @@
+<app-navigation></app-navigation>
+
+
 <h1>Personal</h1>
 
 <div *ngFor='let staff of staff$'>
-    <h2>{{staff.titel}} {{staff.id}}</h2>
+    <h2>{{staff.titel}} {{staff.userid}}</h2>
     <p>Station: {{staff.station}}, Fachbereich: {{staff.faculty}}</p>
     
 </div>

@@ -9,15 +9,27 @@ import { Bill } from './bill.model';
   providedIn: 'root'
 })
 export class DataService {
-  patientsUrl = '/api/patients';
-  staffUrl = '/api/staff';
-  billsUrl = '/api/bills';
-  appointmentrsUrl = '/api/appointments';
+  //baseRoot = "http://localhost:8080"
+  //baseRoot = "node:8080"
+  baseRoot = "/api"
+  patientsUrl = this.baseRoot + '/patients';
+  updatepatientsUrl = this.baseRoot + '/updatepatient';
+  staffUrl = this.baseRoot + '/staff';
+  billsUrl = this.baseRoot + '/bills';
+  appointmentrsUrl = this.baseRoot + '/appointments';
 
   constructor(private _http: HttpClient) { }
 
   getPatients() {
     return this._http.get<Patient[]>(this.patientsUrl);
+  }
+
+  postPatient(query) {
+    return this._http.post(this.patientsUrl + query, "");
+  }
+
+  updatePatient(query) {
+    return this._http.post(this.updatepatientsUrl + query, "");
   }
 
   getStaff(){
@@ -30,5 +42,9 @@ export class DataService {
 
   getAppointments(){
     return this._http.get<Appointment[]>(this.appointmentrsUrl);
+  }
+
+  postAppointment(query) {
+    return this._http.post(this.appointmentrsUrl + query, "");
   }
 }

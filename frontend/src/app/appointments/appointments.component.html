@@ -1,17 +1,23 @@
+<app-navigation></app-navigation>
+
 <h1>Termine</h1>
 
 <div *ngFor='let appointment of appointments$'>
-    <p>Zeit: {{appointment.time}}, Station: {{appointment.station}}, Fachbereich: {{appointment.faculty}}, Doctor: {{appointment.doctor}}</p>
+    <p>Zeit: {{appointment.time}}, Station: {{appointment.station}}, Fachbereich: {{appointment.faculty}}</p>
     
 </div>
 <p>
 <h1>Neuer Termin</h1>
 
 <div class="form-group">
+    <label for="power">Name des Patienten</label>
+    <input type="text" class="form-control" id="name" (input)="name=$event.target.value"  [value]="name">
     <label for="power">Datum</label>
-    <input type="text" class="form-control" id="name">
+    <input type="text" class="form-control" id="date" (input)="date=$event.target.value"  [value]="date">
     <label for="power">Fachbereich</label>
-    <input type="text" class="form-control" id="name">
-    <button type="submit" class="btn btn-success">Submit</button>
+    <input type="text" class="form-control" id="faculty" (input)="faculty=$event.target.value"  [value]="faculty">
+    <label for="power">Station</label>
+    <input type="text" class="form-control" id="station" (input)="station=$event.target.value"  [value]="station">
+    <button type="submit" class="btn btn-success" (click)="createAppointment()">Submit</button>
     
   </div>

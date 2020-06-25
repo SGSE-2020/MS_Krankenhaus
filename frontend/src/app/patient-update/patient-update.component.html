@@ -1,0 +1,23 @@
+<app-navigation></app-navigation>
+
+
+<h1>Patienten bearbeiten</h1>
+
+
+<div class="form-group">
+    <label for="power">Name des Patienten</label>
+    <input type="text" class="form-control" id="name" (input)="name=$event.target.value"  [value]="name" style="width: 500px;">
+    <label for="power">Station</label>
+    <input type="text" class="form-control" id="station" (input)="station=$event.target.value"  [value]="station" style="width: 500px;">
+    <label for="power">Fachbereich</label>
+    <input type="text" class="form-control" id="faculty" (input)="faculty=$event.target.value"  [value]="faculty" style="width: 500px;">
+    <label for="power">Symptome</label>
+    <input type="text" class="form-control" id="symtomps" (input)="symtomps=$event.target.value"  [value]="symtomps" style="width: 500px;">
+    <label for="power">Diagnose</label>
+    <input type="text" class="form-control" id="diagnosis" (input)="diagnosis=$event.target.value"  [value]="diagnosis" style="width: 500px;">
+    <label for="power">Medikamente</label>
+    <input type="text" class="form-control" id="medication" (input)="medication=$event.target.value"  [value]="medication" style="width: 500px;">
+
+    <button type="submit" class="btn btn-success" (click)="updatePatient()">Submit</button>
+    
+  </div>
