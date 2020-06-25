@@ -31,7 +31,7 @@ const routes: Routes = [
     { path: 'bills', component: BillsComponent },
     { path: 'impressum', component: ImpressumComponent },
     { path: 'newpatient', component: PatientNewComponent },
-    { path: 'updatepatient', component: PatientUpdateComponent },
+    { path: 'updatepatient/:patientId', component: PatientUpdateComponent },
     {path: 'login', component: LoginComponent, data: {authGuardPipe: redirectLoggedInToHome}},
   
     // If there is not match, redirect to home

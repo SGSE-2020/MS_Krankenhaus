@@ -13,6 +13,7 @@ export class DataService {
   //baseRoot = "node:8080"
   //baseRoot = "/api"
   patientsUrl = this.baseRoot + '/patients';
+  updatepatientsUrl = this.baseRoot + '/updatepatient';
   staffUrl = this.baseRoot + '/staff';
   billsUrl = this.baseRoot + '/bills';
   appointmentrsUrl = this.baseRoot + '/appointments';
@@ -25,6 +26,10 @@ export class DataService {
 
   postPatient(query) {
     return this._http.post(this.patientsUrl + query, "");
+  }
+
+  updatePatient(query) {
+    return this._http.post(this.updatepatientsUrl + query, "");
   }
 
   getStaff(){

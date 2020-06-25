@@ -52,7 +52,7 @@ app.get('/patients', function (req, res) {
     response = patients
   });
   res.set("Access-Control-Allow-Origin", "*");
-  res.set("Access-Control-Allow-Methods", "GET, POST, OPTIONS"); 
+  res.set("Access-Control-Allow-Methods", "GET, POST, OPTIONS, PUT"); 
   res.set('Access-Control-Allow-Credentials', true);
   res.set('Content-Type', 'application/json');
   res.status(200);
@@ -66,14 +66,14 @@ app.post('/patients', function (req, res) {
    console.log("New Patient created", patient.userid);
  });
   res.set("Access-Control-Allow-Origin", "*");
-  res.set("Access-Control-Allow-Methods", "GET, POST, OPTIONS"); 
+  res.set("Access-Control-Allow-Methods", "GET, POST, OPTIONS, PUT"); 
   res.set('Access-Control-Allow-Credentials', true);
   res.set('Content-Type', 'application/json');
   res.status(200);
   res.json({created: true});
 })
 
-app.put('/patients', function (req, res) {
+app.post('/updatepatient', function (req, res) {
   db.patient.update({ name: req.query.name, station: req.query.station,
     faculty: req.query.faculty, symtomps: req.query.symtomps, diagnosis: req.query.diagnosis,
     medication: req.query.medication}, {
@@ -84,7 +84,7 @@ app.put('/patients', function (req, res) {
     console.log("Done");
   });
   res.set("Access-Control-Allow-Origin", "*");
-  res.set("Access-Control-Allow-Methods", "GET, POST, OPTIONS"); 
+  res.set("Access-Control-Allow-Methods", "GET, POST, OPTIONS, PUT"); 
   res.set('Access-Control-Allow-Credentials', true);
   res.set('Content-Type', 'application/json');
   res.status(200);
@@ -100,7 +100,7 @@ app.delete('/patients', function (req, res) {
     console.log("Deleted");
   });
   res.set("Access-Control-Allow-Origin", "*");
-  res.set("Access-Control-Allow-Methods", "GET, POST, OPTIONS"); 
+  res.set("Access-Control-Allow-Methods", "GET, POST, OPTIONS, PUT"); 
   res.set('Access-Control-Allow-Credentials', true);
   res.set('Content-Type', 'application/json');
   res.status(200);
@@ -113,7 +113,7 @@ app.get('/staff', function (req, res) {
     response = staff
   });
   res.set("Access-Control-Allow-Origin", "*");
-  res.set("Access-Control-Allow-Methods", "GET, POST, OPTIONS"); 
+  res.set("Access-Control-Allow-Methods", "GET, POST, OPTIONS, PUT"); 
   res.set('Access-Control-Allow-Credentials', true);
   res.set('Content-Type', 'application/json');
   res.json(response);
@@ -122,7 +122,7 @@ app.get('/staff', function (req, res) {
 app.get('/bills', function (req, res) {
   response = testData.testBills;
   res.set("Access-Control-Allow-Origin", "*");
-  res.set("Access-Control-Allow-Methods", "GET, POST, OPTIONS"); 
+  res.set("Access-Control-Allow-Methods", "GET, POST, OPTIONS, PUT"); 
   res.set('Access-Control-Allow-Credentials', true);
   res.set('Content-Type', 'application/json');
   res.json(response);
@@ -134,7 +134,7 @@ app.get('/appointments', function (req, res) {
     response = appointment
   });
   res.set("Access-Control-Allow-Origin", "*");
-  res.set("Access-Control-Allow-Methods", "GET, POST, OPTIONS"); 
+  res.set("Access-Control-Allow-Methods", "GET, POST, OPTIONS, PUT"); 
   res.set('Access-Control-Allow-Credentials', true);
   res.set('Content-Type', 'application/json');
   res.json(response);
@@ -146,7 +146,7 @@ app.post('/appointments', function (req, res) {
     console.log("New appointment created", appointment.patientid);
   });
   res.set("Access-Control-Allow-Origin", "*");
-  res.set("Access-Control-Allow-Methods", "GET, POST, OPTIONS"); 
+  res.set("Access-Control-Allow-Methods", "GET, POST, OPTIONS, PUT"); 
   res.set('Access-Control-Allow-Credentials', true);
   res.set('Content-Type', 'application/json');
   res.json({created: true});
