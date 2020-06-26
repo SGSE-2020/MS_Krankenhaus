@@ -1,7 +1,7 @@
 const Sequelize = require("sequelize");
 
 const sequelize = new Sequelize('krankenhaus', 'krankenhaus', 'sgse-ss2020', {
-    host: 'ms-krankenhaus-db',
+    host: 'localhost',
     dialect: 'postgres',
     timestamps: false,
 });
