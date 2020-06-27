@@ -1,6 +1,6 @@
 const Sequelize = require("sequelize");
 
-const sequelize = new Sequelize('krankenhaus', 'krankenhaus', 'sgse-ss2020', {
+const sequelize = new Sequelize('mydb', 'dbuser', 'sgse-ss2020', {
     host: 'localhost',
     dialect: 'postgres',
     port: 5432

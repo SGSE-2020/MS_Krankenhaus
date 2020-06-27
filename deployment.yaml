@@ -59,7 +59,7 @@ spec:
         volumeMounts:
         - mountPath: /var/lib/postgresql/data/
           name: db
-          subPath: ms-krankenhaus-db-test
+          subPath: ms-krankenhaus-db-other
         ports:
         - containerPort: 5432
       
