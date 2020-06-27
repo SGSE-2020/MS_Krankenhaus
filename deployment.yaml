@@ -37,6 +37,7 @@ spec:
                 key: POSTGRES_PASSWORD
         ports:
         - containerPort: 8080
+        - containerPort: 50051
       - image: postgres
         name: ms-krankenhaus-db
         env:
@@ -58,7 +59,10 @@ spec:
         volumeMounts:
         - mountPath: /var/lib/postgresql/data/
           name: db
-          subPath: krankenhaus-db
+          subPath: ms-krankenhaus-db
+        ports:
+        - containerPort: 5432
+      
       restartPolicy: Always
       volumes:
       - name: db
