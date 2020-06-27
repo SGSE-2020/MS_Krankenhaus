@@ -3,7 +3,7 @@ const Sequelize = require("sequelize");
 const sequelize = new Sequelize('krankenhaus', 'krankenhaus', 'sgse-ss2020', {
     host: 'localhost',
     dialect: 'postgres',
-    timestamps: false,
+    port: 5432
 });
 
 const db = {};
