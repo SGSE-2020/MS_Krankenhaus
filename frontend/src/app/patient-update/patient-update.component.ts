@@ -27,7 +27,7 @@ export class PatientUpdateComponent implements OnInit {
       this.name = this.patient$.name;
       this.station = this.patient$.station;
       this.faculty = this.patient$.faculty;
-      this.symtomps = this.patient$.symptomps;
+      this.symtomps = this.patient$.symtomps;
       this.diagnosis = this.patient$.diagnosis;
       this.medication = this.patient$.medication;
     });

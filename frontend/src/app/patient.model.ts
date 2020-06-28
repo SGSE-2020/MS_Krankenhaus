@@ -3,7 +3,7 @@ export class Patient {
     name: string;
     station: string;
     faculty: string;
-    symptomps: string;
+    symtomps: string;
     diagnosis: string;
     medication: string;
 }
