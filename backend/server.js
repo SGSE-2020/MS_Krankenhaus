@@ -48,7 +48,7 @@ var app = express();
 
 function buildHeaderSuccess(res) {
   res.set("Access-Control-Allow-Origin", "*");
-  res.set("Access-Control-Allow-Methods", "GET, POST, OPTIONS, PUT"); 
+  res.set("Access-Control-Allow-Methods", "GET, POST, OPTIONS, PUT, DELETE"); 
   res.set('Access-Control-Allow-Credentials', true);
   res.set('Content-Type', 'application/json');
   res.status(200);
@@ -104,14 +104,15 @@ app.post('/updatepatient', function (req, res) {
   // });
 })
 
-app.delete('/patients', function (req, res) {
+app.post('/deletepatient', function (req, res) {
   buildHeaderSuccess(res);
   testData.testPatients.splice(req.query.id-1,1)
   for(patient in testData.testPatients) {
-    if(req.query.id > testData.testPatients[patient].userid) {
+    if(req.query.id < testData.testPatients[patient].userid) {
       testData.testPatients[patient].userid = testData.testPatients[patient].userid -1
     }
   }
+  console.log(testData.testPatients)
   res.json({deleted: true});
   // db.patient.destroy({
   //   where: {

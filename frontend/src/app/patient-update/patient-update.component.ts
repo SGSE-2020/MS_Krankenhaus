@@ -47,4 +47,8 @@ export class PatientUpdateComponent implements OnInit {
     
   }
 
+  deletePatient() {
+    this.dataService.deletePatient("?id=" + this.patient$.userid).subscribe(response => { console.log(response)});
+  }
+
 }

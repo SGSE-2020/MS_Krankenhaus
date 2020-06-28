@@ -14,6 +14,7 @@ export class DataService {
   //baseRoot = "/api"
   patientsUrl = this.baseRoot + '/patients';
   updatepatientsUrl = this.baseRoot + '/updatepatient';
+  deletepatientsUrl = this.baseRoot + '/deletepatient/';
   staffUrl = this.baseRoot + '/staff';
   billsUrl = this.baseRoot + '/bills';
   appointmentrsUrl = this.baseRoot + '/appointments';
@@ -30,6 +31,10 @@ export class DataService {
 
   updatePatient(query) {
     return this._http.post(this.updatepatientsUrl + query, "");
+  }
+
+  deletePatient(query) {
+    return this._http.post(this.deletepatientsUrl + query, "");
   }
 
   getStaff(){
