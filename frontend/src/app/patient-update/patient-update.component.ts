@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Patient } from '../patient.model';
 import { GlobalVariables } from '../globalData';
 import { DataService } from '../data.service';
@@ -19,7 +19,7 @@ export class PatientUpdateComponent implements OnInit {
   medication: string;
   query: string;
   
-  constructor(private route: ActivatedRoute, private dataService: DataService) { }
+  constructor(private route: ActivatedRoute, private dataService: DataService, private router: Router) { }
 
   ngOnInit(): void {
     this.route.paramMap.subscribe(params => {
@@ -45,10 +45,12 @@ export class PatientUpdateComponent implements OnInit {
     this.dataService.updatePatient(this.query)
       .subscribe(response => { console.log(response)})
     
+    this.router.navigate(['/patient', this.patient$.userid]);
   }
 
   deletePatient() {
     this.dataService.deletePatient("?id=" + this.patient$.userid).subscribe(response => { console.log(response)});
+    this.router.navigate(['/patients']);
   }
 
 }

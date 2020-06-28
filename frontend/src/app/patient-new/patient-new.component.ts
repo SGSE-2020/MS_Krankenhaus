@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { DataService } from '../data.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-patient-new',
@@ -15,7 +16,7 @@ export class PatientNewComponent implements OnInit {
   medication: string;
   query: string;
 
-  constructor(private dataService: DataService) { }
+  constructor(private dataService: DataService, private router: Router) { }
 
   ngOnInit(): void {
     this.name = null;
@@ -42,6 +43,7 @@ export class PatientNewComponent implements OnInit {
     console.log(this.query);
     this.dataService.postPatient(this.query)
       .subscribe(response => { console.log(response)})
+    this.router.navigate(['/patients']);
   }
 
 }
