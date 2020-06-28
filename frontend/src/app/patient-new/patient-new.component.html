@@ -1,5 +1,6 @@
 <app-navigation></app-navigation>
 
+<div class="mycontainer">
 
 <h1>Neuen Patienten erstellen</h1>
 
@@ -18,6 +19,8 @@
     <label for="power">Medikamente</label>
     <input type="text" class="form-control" id="medication" (input)="medication=$event.target.value"  [value]="medication" style="width: 500px;">
 
-    <button type="submit" class="btn btn-success" (click)="createPatient()">Submit</button>
+    <button type="submit" class="btn btn-success" (click)="createPatient()">Erstellen</button>
     
   </div>
+
+</div>

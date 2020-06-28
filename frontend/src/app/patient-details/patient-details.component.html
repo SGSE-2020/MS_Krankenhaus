@@ -1,5 +1,6 @@
 <app-navigation></app-navigation>
 
+<div class="mycontainer">
 
 <div *ngIf="patient$">
     <h1>{{ patient$.name }}</h1>
@@ -10,5 +11,7 @@
     
   <a mat-raised-button [routerLink]="['/updatepatient', patient$.userid]">Bearbeiten</a>
 
+
+</div>
 
 </div>

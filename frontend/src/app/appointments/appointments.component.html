@@ -1,5 +1,7 @@
 <app-navigation></app-navigation>
 
+<div class="mycontainer">
+
 <h1>Termine</h1>
 
 <div *ngFor='let appointment of appointments$'>
@@ -18,6 +20,8 @@
     <input type="text" class="form-control" id="faculty" (input)="faculty=$event.target.value"  [value]="faculty">
     <label for="power">Station</label>
     <input type="text" class="form-control" id="station" (input)="station=$event.target.value"  [value]="station">
-    <button type="submit" class="btn btn-success" (click)="createAppointment()">Submit</button>
+    <button type="submit" class="btn btn-success" (click)="createAppointment()">Estellen</button>
     
   </div>
+
+</div>
