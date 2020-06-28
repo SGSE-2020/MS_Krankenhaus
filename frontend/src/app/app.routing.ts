@@ -23,15 +23,15 @@ const routes: Routes = [
         
       ]
     },
-    {path: 'home', component: HomeComponent},
-    { path: 'staff', component: StaffComponent },
-    { path: 'appointments', component: AppointmentsComponent },
-    { path: 'patients', component: PatientsComponent },
-    { path: 'patient/:patientId', component: PatientDetailsComponent },
-    { path: 'bills', component: BillsComponent },
-    { path: 'impressum', component: ImpressumComponent },
-    { path: 'newpatient', component: PatientNewComponent },
-    { path: 'updatepatient/:patientId', component: PatientUpdateComponent },
+    {path: 'home', component: HomeComponent, runGuardsAndResolvers: 'always'},
+    { path: 'staff', component: StaffComponent, runGuardsAndResolvers: 'always'},
+    { path: 'appointments', component: AppointmentsComponent, runGuardsAndResolvers: 'always'},
+    { path: 'patients', component: PatientsComponent, runGuardsAndResolvers: 'always' },
+    { path: 'patient/:patientId', component: PatientDetailsComponent, runGuardsAndResolvers: 'always' },
+    { path: 'bills', component: BillsComponent, runGuardsAndResolvers: 'always' },
+    { path: 'impressum', component: ImpressumComponent, runGuardsAndResolvers: 'always' },
+    { path: 'newpatient', component: PatientNewComponent, runGuardsAndResolvers: 'always' },
+    { path: 'updatepatient/:patientId', component: PatientUpdateComponent, runGuardsAndResolvers: 'always' },
     {path: 'login', component: LoginComponent, data: {authGuardPipe: redirectLoggedInToHome}},
   
     // If there is not match, redirect to home
@@ -41,5 +41,6 @@ const routes: Routes = [
 const routerOptions: ExtraOptions = {
   useHash: false,
 };
+
 
 export const AppRoutingModule = RouterModule.forRoot(routes, routerOptions);
