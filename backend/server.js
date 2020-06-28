@@ -35,6 +35,9 @@ const shouldDropTables = true;
 // });
 
 function addPatient (ctx) {
+  testData.testPatients.push({ userid: testData.testPatients.length+1, name: ctx.req.name, station: ctx.req.station,
+    faculty: ctx.req.faculty, symtomps: ctx.req.symtomps, diagnosis: ctx.req.diagnosis,
+    medication: ctx.req.medication})
     ctx.res = { success: true }
   }
   

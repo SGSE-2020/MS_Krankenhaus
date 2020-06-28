@@ -6,7 +6,7 @@ service Hospital {
 }
 
 message Patient {
-  string userID = 1;
+  string name = 1;
   string station = 2;
   string faculty = 3;
   string symtomps = 4;
