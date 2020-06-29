@@ -1,33 +1,18 @@
-* {
-    margin: 0;
-    padding: 0;
-}
-body {
-    font: 0.9em/1 "Helvetica";
-}
-
-fieldset {
-    margin: 1em;
-    padding: 1em;
-    width: 23em;
-    border: 0.1em solid #000;
-}
-legend {
-    text-transform: lowercase;
+.btn {
+    width: 501px;
+    margin-top: 15px;
 }
 
 label {
-    float: left;
-    width: 5em;
-    padding-top: 0.3em;
-    text-align: right;
-    margin-right: 1.5em;
+    font-size: medium;
+    padding-top: 15px;
 }
-input {
-    display: block;
-    font-size: 1em;
-    margin-bottom: 0.8em;
-    border: 0.1em solid #000;
-    padding: 0.1em;
-    width: 15em;
+
+table {
+    width: 50%;
+  }
+
+th {
+    font-size: large;
+    color: black;
 }

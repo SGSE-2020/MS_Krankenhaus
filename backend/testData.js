@@ -26,6 +26,6 @@ exports.testBills = [
 ]
 
 exports.testAppointments = [
-    {id: 1, patientid: "Dieter", time: "23.08.2020", station:"A-3", faculty:"Dermatologie"},
-    {id: 2, patientid: "Dieter", time: "28.08.2020", station:"A-3", faculty:"Dermatologie"},
+    {id: 1, patientid: "Karl", time: "23.08.2020", station:"A-3", faculty:"Dermatologie"},
+    {id: 2, patientid: "Karl", time: "28.08.2020", station:"A-3", faculty:"Dermatologie"},
 ]

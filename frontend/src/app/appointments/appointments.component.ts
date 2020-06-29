@@ -15,6 +15,8 @@ export class AppointmentsComponent implements OnInit {
   station: string;
   query: string;
 
+  displayedColumns: string[] = ['name', 'station', 'faculty', 'time'];
+
   appointments$: Appointment[]
   constructor(private dataService: DataService) {}
 
