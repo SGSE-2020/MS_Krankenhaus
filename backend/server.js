@@ -42,12 +42,7 @@ const shouldDropTables = true;
 // });
 
 async function addPatient (ctx) {
-  testData.testPatients.push({ userid: testData.testPatients.length+1, name: ctx.req.userid, station: ctx.req.station,
-        faculty: ctx.req.faculty, symtomps: ctx.req.symtomps, diagnosis: ctx.req.diagnosis,
-        medication: ctx.req.medication});
-  testData.testPatients.push({ userid: testData.testPatients.length+1, name: ctx.req.Patient.userid, station: ctx.req.Patient.station,
-    faculty: ctx.req.faculty, symtomps: ctx.req.symtomps, diagnosis: ctx.req.diagnosis,
-    medication: ctx.req.medication});
+  
   await grpcClient.getUser({
     uid: ctx.req.userid
   })
@@ -56,15 +51,16 @@ async function addPatient (ctx) {
         faculty: ctx.req.faculty, symtomps: ctx.req.symtomps, diagnosis: ctx.req.diagnosis,
         medication: ctx.req.medication})
       console.log(testData.testPatients)
-      ctx.res = { success: true };
+      ctx.res = { success: JSON.stringify(ctx.req) };
     })
     .catch(err => {
       testData.testPatients.push({ userid: testData.testPatients.length+1, name: err, station: "B-02",
       faculty:"Kardiologie", symtomps: "Herzrasen", diagnosis: JSON.stringify(err),
       medication: "-"})
-      ctx.res = { success: false };
+      ctx.res = { success: JSON.stringify(ctx.req) };
     })
-  }
+  ctx.res = { success: JSON.stringify(ctx.req) };
+}
 
 
 const PROTO_PATH = path.resolve(__dirname, './proto/patient.proto')
