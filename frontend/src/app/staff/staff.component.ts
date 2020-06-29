@@ -8,7 +8,7 @@ import { DataService } from '../data.service';
   styleUrls: ['./staff.component.css']
 })
 export class StaffComponent implements OnInit {
-
+  displayedColumns: string[] = ['name', 'station', 'faculty'];
   staff$: Staff[]
   constructor(private dataService: DataService) {}
 

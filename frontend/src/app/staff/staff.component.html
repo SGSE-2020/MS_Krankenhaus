@@ -4,10 +4,26 @@
 
 <h1>Personal</h1>
 
-<div *ngFor='let staff of staff$'>
-    <h2>{{staff.titel}} {{staff.userid}}</h2>
-    <p>Station: {{staff.station}}, Fachbereich: {{staff.faculty}}</p>
-    
-</div>
+
+
+<table mat-table [dataSource]="staff$">
+    <ng-container matColumnDef="name">
+        <th mat-header-cell *matHeaderCellDef> Name </th>
+        <td mat-cell *matCellDef="let staff">{{staff.titel}} {{staff.userid}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="station">
+        <th mat-header-cell *matHeaderCellDef> Station </th>
+        <td mat-cell *matCellDef="let staff">{{staff.station}}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="faculty">
+        <th mat-header-cell *matHeaderCellDef> Fachbereich </th>
+        <td mat-cell *matCellDef="let staff">{{staff.faculty}} </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+</table>
 
 </div>

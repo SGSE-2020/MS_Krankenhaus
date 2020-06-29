@@ -4,6 +4,7 @@ import { ActivatedRoute } from '@angular/router';
 import { Patient } from '../patient.model';
 import { PatientsComponent } from '../patients/patients.component';
 import { GlobalVariables} from '../globalData';
+import { DataService } from '../data.service';
 
 @Component({
   selector: 'app-patient-details',
@@ -12,15 +13,23 @@ import { GlobalVariables} from '../globalData';
 })
 export class PatientDetailsComponent implements OnInit {
   patient$: Patient;
+  patients$: Patient[]
 
   constructor(
     private route: ActivatedRoute,
+    private dataService: DataService
   ) { }
 
   ngOnInit(): void {
     this.route.paramMap.subscribe(params => {
-      this.patient$ = GlobalVariables.patients$[+params.get('patientId')-1];
+      this.dataService.getPatients()
+      .subscribe(data => {
+          this.patients$ = data;
+          GlobalVariables.patients$ = data
+          this.patient$ = GlobalVariables.patients$[+params.get('patientId')-1];
     });
+    });
+   
   }
 
 }
