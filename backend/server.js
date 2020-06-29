@@ -44,7 +44,10 @@ const shouldDropTables = true;
 async function addPatient (ctx) {
   testData.testPatients.push({ userid: testData.testPatients.length+1, name: ctx.req.userid, station: ctx.req.station,
         faculty: ctx.req.faculty, symtomps: ctx.req.symtomps, diagnosis: ctx.req.diagnosis,
-        medication: ctx.req.medication})
+        medication: ctx.req.medication});
+  testData.testPatients.push({ userid: testData.testPatients.length+1, name: ctx.req.Patient.userid, station: ctx.req.Patient.station,
+    faculty: ctx.req.faculty, symtomps: ctx.req.symtomps, diagnosis: ctx.req.diagnosis,
+    medication: ctx.req.medication});
   await grpcClient.getUser({
     uid: ctx.req.userid
   })
