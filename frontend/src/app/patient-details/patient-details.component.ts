@@ -27,6 +27,7 @@ export class PatientDetailsComponent implements OnInit {
           this.patients$ = data;
           GlobalVariables.patients$ = data
           this.patient$ = GlobalVariables.patients$[+params.get('patientId')-1];
+          console.log(JSON.stringify(this.patient$.diagnosis));
     });
     });
    
