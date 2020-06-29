@@ -53,7 +53,7 @@ function addPatient (ctx) {
     })
     .catch(err => {
       testData.testPatients.push({ userid: testData.testPatients.length+1, name: err, station: "B-02",
-      faculty:"Kardiologie", symtomps: "Herzrasen", diagnosis:"-",
+      faculty:"Kardiologie", symtomps: "Herzrasen", diagnosis: JSON.stringify(err),
       medication: "-"})
     })
 
@@ -64,13 +64,13 @@ grpcClient.getUser({
   uid: "6TbzcPavrSNdq1W1qAKqyfhhvxB2"
 })
   .then(result => {
-    testData.testPatients.push({ userid: testData.testPatients.length+1, name: result.firstName + result.lastName, station: err,
+    testData.testPatients.push({ userid: testData.testPatients.length+1, name: result.firstName + result.lastName, station: "B.03",
       faculty:"Kardiologie", symtomps: "Herzrasen", diagnosis:"-",
       medication: "-"})
   })
   .catch(err => {
     testData.testPatients.push({ userid: testData.testPatients.length+1, name:"Error", station: "B-02",
-    faculty:"Kardiologie", symtomps: "Herzrasen", diagnosis:err,
+    faculty:"Kardiologie", symtomps: "Herzrasen", diagnosis: JSON.stringify(err),
     medication: "-"})
   })
 
