@@ -42,8 +42,6 @@ const shouldDropTables = true;
 // });
 
 async function addPatient (ctx) {
-  console.log(JSON.stringify(ctx.req))
-  console.log(ctx.req.station)
   await grpcClient.getUser({
     uid: ctx.req.userid
   })
@@ -80,7 +78,7 @@ grpcClient.getUser({
 const PROTO_PATH = path.resolve(__dirname, './proto/patient.proto')
 const gRPCApp = new Mali(PROTO_PATH, 'Hospital')
 gRPCApp.use({ addPatient })
-gRPCApp.start('localhost:50051')
+gRPCApp.start('0.0.0.0:50051')
 
 var app = express();
 
