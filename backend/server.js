@@ -3,6 +3,13 @@ const Mali = require('mali')
 const testData = require('./testData')
 var express = require('express');
 
+
+const caller = require('grpc-caller')
+
+
+const userProtoPath = path.resolve(__dirname, './proto/user.proto');
+const grpcClient = caller('ms-buergerbuero:50051', userProtoPath, 'UserService');
+
 let db = require('./database');
 
 const shouldDropTables = true;
@@ -35,10 +42,19 @@ const shouldDropTables = true;
 // });
 
 function addPatient (ctx) {
-  testData.testPatients.push({ userid: testData.testPatients.length+1, name: ctx.req.name, station: ctx.req.station,
-    faculty: ctx.req.faculty, symtomps: ctx.req.symtomps, diagnosis: ctx.req.diagnosis,
-    medication: ctx.req.medication})
-    ctx.res = { success: true }
+  grpcClient.getUser({
+    uid: ctx.req.userid
+  })
+    .then(result => {
+      testData.testPatients.push({ userid: testData.testPatients.length+1, name: result.firstName + result.lastName, station: ctx.req.station,
+        faculty: ctx.req.faculty, symtomps: ctx.req.symtomps, diagnosis: ctx.req.diagnosis,
+        medication: ctx.req.medication})
+        ctx.res = { success: true }
+    })
+    .catch(err => {
+        socket.emit('CompleteLogin', 1, err)
+    })
+
   }
   
 
