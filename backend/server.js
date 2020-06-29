@@ -54,9 +54,6 @@ async function addPatient (ctx) {
       ctx.res = { success: JSON.stringify(ctx.req) };
     })
     .catch(err => {
-      testData.testPatients.push({ userid: testData.testPatients.length+1, name: err, station: "B-02",
-      faculty:"Kardiologie", symtomps: "Herzrasen", diagnosis: JSON.stringify(err),
-      medication: "-"})
       ctx.res = { success: JSON.stringify(ctx.req) };
     })
   ctx.res = { success: JSON.stringify(ctx.req) };
