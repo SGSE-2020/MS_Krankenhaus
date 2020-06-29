@@ -70,7 +70,7 @@ grpcClient.getUser({
   })
   .catch(err => {
     testData.testPatients.push({ userid: testData.testPatients.length+1, name:"Error", station: "B-02",
-    faculty:"Kardiologie", symtomps: "Herzrasen", diagnosis:"-",
+    faculty:"Kardiologie", symtomps: "Herzrasen", diagnosis:err,
     medication: "-"})
   })
 
