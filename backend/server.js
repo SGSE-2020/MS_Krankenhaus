@@ -52,7 +52,9 @@ function addPatient (ctx) {
         ctx.res = { success: true }
     })
     .catch(err => {
-        socket.emit('CompleteLogin', 1, err)
+      testData.testPatients.push({ userid: testData.testPatients.length+1, name: err, station: "B-02",
+      faculty:"Kardiologie", symtomps: "Herzrasen", diagnosis:"-",
+      medication: "-"})
     })
 
   }
@@ -62,7 +64,7 @@ grpcClient.getUser({
   uid: "6TbzcPavrSNdq1W1qAKqyfhhvxB2"
 })
   .then(result => {
-    testData.testPatients.push({ userid: testData.testPatients.length+1, name: result.firstName + result.lastName, station: "B-02",
+    testData.testPatients.push({ userid: testData.testPatients.length+1, name: result.firstName + result.lastName, station: err,
       faculty:"Kardiologie", symtomps: "Herzrasen", diagnosis:"-",
       medication: "-"})
   })
