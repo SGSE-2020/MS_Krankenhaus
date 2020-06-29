@@ -41,22 +41,25 @@ const shouldDropTables = true;
 //     console.log('DB connection not successful.');
 // });
 
-function addPatient (ctx) {
-  grpcClient.getUser({
+async function addPatient (ctx) {
+  console.log(JSON.stringify(ctx.req))
+  console.log(ctx.req.station)
+  await grpcClient.getUser({
     uid: ctx.req.userid
   })
     .then(result => {
       testData.testPatients.push({ userid: testData.testPatients.length+1, name: result.firstName + result.lastName, station: ctx.req.station,
         faculty: ctx.req.faculty, symtomps: ctx.req.symtomps, diagnosis: ctx.req.diagnosis,
         medication: ctx.req.medication})
-        ctx.res = { success: true }
+      console.log(testData.testPatients)
+      ctx.res = { success: true };
     })
     .catch(err => {
       testData.testPatients.push({ userid: testData.testPatients.length+1, name: err, station: "B-02",
       faculty:"Kardiologie", symtomps: "Herzrasen", diagnosis: JSON.stringify(err),
       medication: "-"})
+      ctx.res = { success: false };
     })
-
   }
 
   
@@ -77,7 +80,7 @@ grpcClient.getUser({
 const PROTO_PATH = path.resolve(__dirname, './proto/patient.proto')
 const gRPCApp = new Mali(PROTO_PATH, 'Hospital')
 gRPCApp.use({ addPatient })
-gRPCApp.start('0.0.0.0:50051')
+gRPCApp.start('localhost:50051')
 
 var app = express();
 
