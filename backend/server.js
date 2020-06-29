@@ -77,7 +77,7 @@ grpcClient.getUser({
 const PROTO_PATH = path.resolve(__dirname, './proto/patient.proto')
 const gRPCApp = new Mali(PROTO_PATH, 'Hospital')
 gRPCApp.use({ addPatient })
-gRPCApp.start('127.0.0.1:50051')
+gRPCApp.start('0.0.0.0:50051')
 
 var app = express();
 
