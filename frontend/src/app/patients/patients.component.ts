@@ -10,6 +10,7 @@ import { GlobalVariables} from '../globalData';
 })
 export class PatientsComponent implements OnInit {
   patients$: Patient[]
+  displayedColumns: string[] = ['name', 'station', 'faculty', 'symtomps', 'diagnosis', 'medication'];
   constructor(private dataService: DataService) {}
 
   ngOnInit() {

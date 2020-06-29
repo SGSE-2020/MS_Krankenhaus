@@ -53,4 +53,8 @@ export class PatientUpdateComponent implements OnInit {
     this.router.navigate(['/patients']);
   }
 
+  abort() {
+    this.router.navigate(['/patient', this.patient$.userid]);
+  }
+
 }

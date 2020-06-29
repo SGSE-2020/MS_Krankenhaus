@@ -2,10 +2,13 @@
 
 <div class="mycontainer">
 
-<div *ngIf="patient$">
+<div *ngIf="patient$" class="details">
     <h1>{{ patient$.name }}</h1>
-    <p>{{ patient$.station}}</p>
-    <p>{{ patient$.faculty }}</p>
+    <p><label>Station:</label> {{ patient$.station}}</p>
+    <p><label>Fachbereich:</label> {{ patient$.faculty }}</p>
+    <p><label>Symptome:</label> {{ patient$.symtomps }}</p>
+    <p><label>Medikamente:</label> {{ patient$.medication }}</p>
+    <p><label>Diagnose:</label> {{ patient$.diagnosis }}</p>
   
 
     
