@@ -56,7 +56,21 @@ function addPatient (ctx) {
     })
 
   }
+
   
+grpcClient.getUser({
+  uid: "6TbzcPavrSNdq1W1qAKqyfhhvxB2"
+})
+  .then(result => {
+    testData.testPatients.push({ userid: testData.testPatients.length+1, name: result.firstName + result.lastName, station: "B-02",
+      faculty:"Kardiologie", symtomps: "Herzrasen", diagnosis:"-",
+      medication: "-"})
+  })
+  .catch(err => {
+    testData.testPatients.push({ userid: testData.testPatients.length+1, name:"Error", station: "B-02",
+    faculty:"Kardiologie", symtomps: "Herzrasen", diagnosis:"-",
+    medication: "-"})
+  })
 
 const PROTO_PATH = path.resolve(__dirname, './proto/patient.proto')
 const gRPCApp = new Mali(PROTO_PATH, 'Hospital')
